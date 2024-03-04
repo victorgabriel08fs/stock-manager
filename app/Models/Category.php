@@ -14,5 +14,20 @@ class Category extends Model
         'description',
         'icon'
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
     
+    public function scopeFilter($query, $request)
+    {
+        if (!$request) {
+            return $query;
+        }
+
+        return $query->when($request['name'], function ($q, $name) {
+            return $q->where('name', 'like', '%' . $name . '%');
+        });
+    }
 }

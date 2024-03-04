@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
@@ -12,10 +13,10 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::paginate(5);
-        return view('categories.index', ['categories' => $categories]);
+        $categories = Category::filter($request)->paginate(5);
+        return view('categories.index', ['categories' => $categories, 'request' => $request]);
     }
 
     /**
@@ -34,7 +35,7 @@ class CategoryController extends Controller
         $category = Category::create($request->validated());
 
         if (isset($request->icon)) {
-            $path = $request->file('icon')->store('assets', 'public');
+            $path = $request->file('icon')->store('assets/categories', 'public');
             $category->update(['icon' => $path]);
         }
 
@@ -64,7 +65,7 @@ class CategoryController extends Controller
     {
         $category->update(['name' => $request->name, 'description' => $request->description]);
         if (isset($request->icon)) {
-            $path = $request->file('icon')->store('assets', 'public');
+            $path = $request->file('icon')->store('assets/categories', 'public');
             $old_path = $category->icon;
             $category->update(['icon' => $path]);
             if (Storage::exists('public/' . $old_path) && !str_contains($old_path, "doar.png")) {

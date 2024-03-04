@@ -10,13 +10,25 @@
                     </div>
 
                     <div class="card-body">
-                        <div class="d-flex justify-content-end m-2">
+                        <form id="form" class="d-flex align-items-end justify-content-between m-2 mb-4" method="post">
+                            @csrf
+                            @method('get')
+                            <div class="form w-75">
+                                <label for="name" class="form-label">Nome</label>
+                                <input type="text" name="name" id="name"
+                                    value="{{ old('name', $request['name']) }}" class="form-control">
+                            </div>
+                            <button type="submit" class="h-50 btn btn-primary"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
+                            <button type="button" onclick="limparInput('name')" class="h-50 btn btn-secondary"><i
+                                    class="fa-solid fa-broom"></i></button>
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newModal">
+                            <button type="button" class="h-50 btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#newModal">
                                 Nova +
                             </button>
-                            @include('categories.new_modal')
-                        </div>
+                        </form>
+                        @include('categories.new_modal')
 
                         @if (count($categories) > 0)
                             <table class="table table-striped table-hover">
@@ -36,13 +48,12 @@
                                             <td>{{ $category->name }}</td>
                                             <td class="w-50">{{ $category->description }}</td>
                                             <td>
-                                                <img src="{{ asset($category->icon?'storage/' . $category->icon:'storage/assets/doar.png') }}" class="rounded"
-                                                    style="width: 30%" alt="">
+                                                <img src="{{ asset($category->icon ? 'storage/' . $category->icon : 'storage/assets/sem-imagem.png') }}"
+                                                    class="rounded" style="width: 30%" alt="">
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-warning"
-                                                        data-bs-toggle="modal"
+                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                                         data-bs-target="{{ '#editModal' . $category->id }}">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
@@ -75,4 +86,10 @@
             </div>
         </div>
     </div>
+    <script>
+        function limparInput(idDoInput) {
+            document.getElementById(idDoInput).value = '';
+            document.getElementById('form').submit();
+        }
+    </script>
 @endsection
