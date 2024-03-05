@@ -41,6 +41,8 @@ class ProductController extends Controller
             $product->update(['photo' => $path]);
         }
 
+        toastr()->success('Produto cadastrado.', 'Sucesso');
+
         return redirect()->back();
     }
 
@@ -74,6 +76,9 @@ class ProductController extends Controller
                 Storage::delete('public/' . $old_path);
             }
         }
+
+        toastr()->success('Produto atualizado.', 'Sucesso');
+
         return redirect()->back();
     }
 
@@ -89,6 +94,8 @@ class ProductController extends Controller
         if (Storage::exists('public/' . $old_path)) {
             Storage::delete('public/' . $old_path);
         }
+
+        toastr()->success('Produto excluído.', 'Sucesso');
 
         return redirect()->back();
     }

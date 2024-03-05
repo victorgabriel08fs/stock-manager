@@ -49,6 +49,11 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        @if (Route::has('sales.index'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('sales.index') }}">{{ __('Vendas') }}</a>
+                            </li>
+                        @endif
                         @if (Route::has('categories.index'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Categorias') }}</a>

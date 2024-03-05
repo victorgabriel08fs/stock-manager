@@ -22,6 +22,11 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function sales()
+    {
+        return $this->belongsToMany(Sale::class, 'product_sales', 'product_id', 'sale_id');
+    }
+
     public function scopeFilter($query, $request)
     {
         if (!$request) {

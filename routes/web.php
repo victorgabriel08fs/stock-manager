@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('categories', CategoryController::class);
 Route::resource('products', ProductController::class);
+Route::resource('sales', SaleController::class);
+Route::delete('sales/{product}/{sale}/removeItem', [SaleController::class, 'removeItem'])->name('sales.removeItem');
+Route::post('sales/{sale}/{status}/changeStatus', [SaleController::class, 'changeStatus'])->name('sales.changeStatus');

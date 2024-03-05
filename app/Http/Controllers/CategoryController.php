@@ -38,6 +38,7 @@ class CategoryController extends Controller
             $path = $request->file('icon')->store('assets/categories', 'public');
             $category->update(['icon' => $path]);
         }
+        toastr()->success('Categoria cadastrada.', 'Sucesso');
 
         return redirect()->back();
     }
@@ -72,6 +73,9 @@ class CategoryController extends Controller
                 Storage::delete('public/' . $old_path);
             }
         }
+
+        toastr()->success('Categoria atualizada.', 'Sucesso');
+
         return redirect()->back();
     }
 
@@ -86,6 +90,8 @@ class CategoryController extends Controller
         if (Storage::exists('public/' . $old_path) && !str_contains($old_path, "doar.png")) {
             Storage::delete('public/' . $old_path);
         }
+
+        toastr()->success('Categoria excluída.', 'Sucesso');
 
         return redirect()->back();
     }
