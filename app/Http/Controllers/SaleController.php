@@ -40,21 +40,24 @@ class SaleController extends Controller
 
         $sale = Sale::create();
         $product = Product::find($data['product_id']);
-        if ($product->amount > $data['product_amount'])
+        if ($product->amount > $data['product_amount']) {
             ProductSale::create(['product_id' => $product->id, 'sale_id' => $sale->id, 'product_amount' => $request['product_amount']]);
 
-        $products = $sale->products;
-        $total_amount = 0;
-        $total_value = 0;
+            $products = $sale->products;
+            $total_amount = 0;
+            $total_value = 0;
 
-        foreach ($products as $product) {
-            $total_amount = $total_amount + $product->pivot->product_amount;
-            $total_value = $total_value + ($product->pivot->product_amount * $product->price);
+            foreach ($products as $product) {
+                $total_amount = $total_amount + $product->pivot->product_amount;
+                $total_value = $total_value + ($product->pivot->product_amount * $product->price);
+            }
+
+            $sale->update(['total_amount' => $total_amount, 'total_value' => $total_value]);
+
+            toastr()->success('Venda iniciada.', 'Sucesso');
+        } else {
+            toastr()->error('Não há itens suficientes no estoque.', 'Erro');
         }
-
-        $sale->update(['total_amount' => $total_amount, 'total_value' => $total_value]);
-
-        toastr()->success('Venda iniciada.', 'Sucesso');
 
         return redirect()->route('sales.edit', $sale->id);
     }
@@ -108,6 +111,24 @@ class SaleController extends Controller
         return redirect()->route('sales.edit', $sale->id);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Sale $sale)
+    {
+        if ($sale->products()->count() == 0)
+        {
+            $sale->delete();
+
+            toastr()->success('Venda excluída.', 'Sucesso');
+        }else{
+            toastr()->error('Esta venda não pode ser excluída.', 'Erro');
+        }
+
+
+        return redirect()->route('sales.index');
+    }
+
     public function changeStatus(Sale $sale, $status)
     {
         if ($sale->status == "PENDING") {
@@ -131,8 +152,21 @@ class SaleController extends Controller
     {
         $item = ProductSale::where('product_id', $product)->where('sale_id', $sale)->get()->first();
 
-        if (isset($item->id))
+        if (isset($item->id)) {
             $item->delete();
+
+            $sale = Sale::find($sale);
+            $products = $sale->products;
+            $total_amount = 0;
+            $total_value = 0;
+
+            foreach ($products as $product) {
+                $total_amount = $total_amount + $product->pivot->product_amount;
+                $total_value = $total_value + ($product->pivot->product_amount * $product->price);
+            }
+
+            $sale->update(['total_amount' => $total_amount, 'total_value' => $total_value]);
+        }
 
         toastr()->info('Item removido.');
         return redirect()->route('sales.edit', $sale);

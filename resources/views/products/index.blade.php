@@ -44,57 +44,60 @@
                         @include('products.new_modal')
 
                         @if (count($products) > 0)
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Preço</th>
-                                        <th scope="col">Quantidade</th>
-                                        <th scope="col">Foto</th>
-                                        <th scope="col">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($products as $product)
+                            <div class="overflow-auto">
+                                <table class="table table-striped table-hover">
+                                    <thead>
                                         <tr>
-                                            <th scope="row">{{ $product->id }}</th>
-                                            <td>{{ $product->name }}</td>
-                                            <td>{{ number_format($product->price, '2', ',', '.') }}</td>
-                                            <td>{{ number_format($product->amount, '2', ',', '.') }}</td>
-                                            <td class="w-25">
-                                                <img src="{{ asset($product->photo ? 'storage/' . $product->photo : 'storage/assets/sem-imagem.png') }}"
-                                                    class="rounded" style="width: 30%" alt="">
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                        data-bs-target="{{ '#editModal' . $product->id }}">
-                                                        <i class="fas fa-pen"></i>
-                                                    </button>
-                                                    <button type="button" class="btn btn-danger rounded-end"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="{{ '#deleteModal' . $product->id }}">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                    @include('products.delete_modal', [
-                                                        'product' => $product,
-                                                        'categories' => $categories,
-                                                    ])
-                                                    @include('products.edit_modal', [
-                                                        'product' => $product,
-                                                        'categories' => $categories,
-                                                    ])
-                                                </div>
-                                            </td>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nome</th>
+                                            <th scope="col">Preço</th>
+                                            <th scope="col">Quantidade</th>
+                                            <th scope="col">Foto</th>
+                                            <th scope="col">Ações</th>
                                         </tr>
-                                    @endforeach
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($products as $product)
+                                            <tr>
+                                                <th scope="row">{{ $product->id }}</th>
+                                                <td>{{ $product->name }}</td>
+                                                <td>{{ number_format($product->price, '2', ',', '.') }}</td>
+                                                <td>{{ number_format($product->amount, '2', ',', '.') }}</td>
+                                                <td class="w-25">
+                                                    <img src="{{ asset($product->photo ? 'storage/' . $product->photo : 'storage/assets/sem-imagem.png') }}"
+                                                        class="rounded" style="width: 30%" alt="">
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-warning"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="{{ '#editModal' . $product->id }}">
+                                                            <i class="fas fa-pen"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger rounded-end"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="{{ '#deleteModal' . $product->id }}">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                        @include('products.delete_modal', [
+                                                            'product' => $product,
+                                                            'categories' => $categories,
+                                                        ])
+                                                        @include('products.edit_modal', [
+                                                            'product' => $product,
+                                                            'categories' => $categories,
+                                                        ])
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
-                                </tbody>
-                            </table>
-                            <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-                                {{ $products->links() }}
-                            </nav>
+                                    </tbody>
+                                </table>
+                                <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                                    {{ $products->links() }}
+                                </nav>
+                            </div>
                         @else
                             Nenhum registro encontrado
                         @endif
