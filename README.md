@@ -35,22 +35,22 @@ cp .env.example .env
 
 5. Configure o arquivo .env com as informações do seu banco de dados, como nome do banco de dados, nome de usuário e senha.
 
-Gere uma nova chave de aplicativo:
+6. Gere uma nova chave de aplicativo:
 
 ```bash
 php artisan key:generate
 ```
-6. Execute as migrações do banco de dados para criar a estrutura necessária:
+7. Execute as migrações do banco de dados para criar a estrutura necessária:
 ```bash
 php artisan migrate
 ```
 
-7. Inicie o servidor local:
+8. Inicie o servidor local:
 ```bash
 php artisan serve
 ```
 
-8. Abra seu navegador e acesse o sistema através do seguinte URL:
+9. Abra seu navegador e acesse o sistema através do seguinte URL:
 ```bash
 http://localhost:8000
 ```
