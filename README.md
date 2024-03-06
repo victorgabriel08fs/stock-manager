@@ -40,9 +40,15 @@ cp .env.example .env
 ```bash
 php artisan key:generate
 ```
+
 7. Execute as migrações do banco de dados para criar a estrutura necessária:
 ```bash
 php artisan migrate
+```
+
+Caso tenha interesse de povoar o banco de dados com dados de teste:
+```bash
+php artisan migrate:fresh --seed
 ```
 
 8. Inicie o servidor local:
