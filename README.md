@@ -21,13 +21,17 @@ git clone https://github.com/victorgabriel08fs/stock-manager.git
 
 2. Navegue até o diretório do projeto:
 ```bash
-cd nome-do-repositorio
+cd stock-manager
 ```
 
-3. Instale as dependências do projeto usando o Composer:
+3. Instale as dependências do projeto usando o Composer e o npm:
 ```bash
 composer install
 ```
+```bash
+npm install
+```
+
 4. Copie o arquivo .env.example e renomeie para .env. Você pode fazer isso manualmente ou executar o comando abaixo:
 ```bash
 cp .env.example .env
