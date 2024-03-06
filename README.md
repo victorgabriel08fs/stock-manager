@@ -66,7 +66,7 @@ vite:
 npm run dev
 ```
 
-9. Abra seu navegador e acesse o sistema através do seguinte URL:
+10. Abra seu navegador e acesse o sistema através do seguinte URL:
 ```bash
 http://localhost:8000
 ```
