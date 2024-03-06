@@ -38,7 +38,7 @@
                             <!-- Button trigger modal -->
                             <button type="button" class="h-50 btn btn-success" data-bs-toggle="modal"
                                 data-bs-target="#newModal">
-                                Nova +
+                                Novo +
                             </button>
                         </form>
                         @include('products.new_modal')
