@@ -21,7 +21,7 @@ git clone https://github.com/victorgabriel08fs/stock-manager.git
 
 2. Navegue até o diretório do projeto:
 ```bash
-cd nome-do-repositorio
+cd stock-manager
 ```
 
 3. Instale as dependências do projeto usando o Composer:
