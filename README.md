@@ -57,6 +57,7 @@ php artisan serve
 ```
 
 9. Para o frontend faça build ou execute o vite
+
 build:
 ```bash
 npm run build
