@@ -24,13 +24,22 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td class="w-50">{{ $product->name }}</td>
-                                        <td class="w-25">{{ number_format($product->pivot->product_amount, '2', ',', '.') }}
+                                        <td class="w-25">
+                                            {{ number_format($product->pivot->product_amount, '2', ',', '.') }}
                                         </td>
                                         <td>{{ number_format($product->price * $product->pivot->product_amount, '2', ',', '.') }}
                                         </td>
                                         </form>
                                     </tr>
                                 @endforeach
+                                <tr>
+                                    <th colspan="2" scope="row">Total</th>
+                                    <td>{{ number_format($sale->total_amount, '2', ',', '.') }}</td>
+                                    <td>{{ number_format($sale->total_value, '2', ',', '.') }}</td>
+                                    <td>
+
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
