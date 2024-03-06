@@ -7,6 +7,57 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+# Sistema de Gestão de Estoque e Vendas em PHP com Laravel e Bootstrap
+
+Este repositório contém um sistema completo de gerenciamento de estoque e vendas desenvolvido em PHP utilizando o framework Laravel e a biblioteca de front-end Bootstrap. O sistema oferece uma solução abrangente para empresas que necessitam controlar suas categorias de produtos, itens em estoque, vendas e relatórios de desempenho.
+
+## Instruções de Instalação
+
+1. Clone este repositório em sua máquina local usando o comando abaixo:
+
+```bash
+git clone https://github.com/victorgabriel08fs/stock-manager.git
+```
+
+2. Navegue até o diretório do projeto:
+```bash
+cd nome-do-repositorio
+```
+
+3. Instale as dependências do projeto usando o Composer:
+```bash
+composer install
+```
+4. Copie o arquivo .env.example e renomeie para .env. Você pode fazer isso manualmente ou executar o comando abaixo:
+```bash
+cp .env.example .env
+```
+
+5. Configure o arquivo .env com as informações do seu banco de dados, como nome do banco de dados, nome de usuário e senha.
+
+Gere uma nova chave de aplicativo:
+
+```bash
+php artisan key:generate
+```
+6. Execute as migrações do banco de dados para criar a estrutura necessária:
+```bash
+php artisan migrate
+```
+
+7. Inicie o servidor local:
+```bash
+php artisan serve
+```
+
+8. Abra seu navegador e acesse o sistema através do seguinte URL:
+```bash
+http://localhost:8000
+```
+
+Agora você pode começar a usar o sistema de gestão de estoque e vendas!
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
