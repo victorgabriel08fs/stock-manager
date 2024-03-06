@@ -56,6 +56,16 @@ php artisan migrate:fresh --seed
 php artisan serve
 ```
 
+9. Para o frontend faça build ou execute o vite
+build:
+```bash
+npm run build
+```
+vite:
+```bash
+npm run dev
+```
+
 9. Abra seu navegador e acesse o sistema através do seguinte URL:
 ```bash
 http://localhost:8000
