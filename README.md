@@ -46,7 +46,7 @@ php artisan key:generate
 php artisan migrate
 ```
 
-Caso tenha interesse de povoar o banco de dados com dados de teste:
+Caso tenha queira povoar o banco de dados com dados de teste:
 ```bash
 php artisan migrate:fresh --seed
 ```
