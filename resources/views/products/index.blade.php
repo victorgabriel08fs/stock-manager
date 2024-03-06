@@ -53,6 +53,7 @@
                                             <th scope="col">Preço</th>
                                             <th scope="col">Quantidade</th>
                                             <th scope="col">Foto</th>
+                                            <th scope="col">Categoria</th>
                                             <th scope="col">Ações</th>
                                         </tr>
                                     </thead>
@@ -67,6 +68,7 @@
                                                     <img src="{{ asset($product->photo ? 'storage/' . $product->photo : 'storage/assets/sem-imagem.png') }}"
                                                         class="rounded" style="width: 30%" alt="">
                                                 </td>
+                                                <td>{{ $product->category->name ?? 'Não informado' }}</td>
                                                 <td>
                                                     <div class="btn-group">
                                                         <button type="button" class="btn btn-warning"
