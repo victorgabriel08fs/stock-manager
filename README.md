@@ -50,17 +50,22 @@ php artisan key:generate
 php artisan migrate
 ```
 
+8. Faça o link entre a pasta storage e a pasta public:
+```bash
+php artisan storage:link
+```
+
 Caso tenha queira povoar o banco de dados com dados de teste:
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-8. Inicie o servidor local:
+9. Inicie o servidor local:
 ```bash
 php artisan serve
 ```
 
-9. Para o frontend faça build ou execute o vite
+10. Para o frontend faça build ou execute o vite
 
 build:
 ```bash
@@ -71,7 +76,7 @@ vite:
 npm run dev
 ```
 
-10. Abra seu navegador e acesse o sistema através do seguinte URL:
+11. Abra seu navegador e acesse o sistema através do seguinte URL:
 ```bash
 http://localhost:8000
 ```
