@@ -24,8 +24,8 @@ class UpdateProductRequest extends FormRequest
         return [
             'name' => ['required', 'min:3', 'max:255'],
             'photo' => ['nullable', 'file'],
-            'price' => ['required', 'numeric'],
-            'amount' => ['required', 'numeric'],
+            'price' => ['required', 'numeric','min:0'],
+            'amount' => ['required', 'numeric', 'min:0'],
             'category_id' => ['nullable', 'exists:categories,id']
         ];
     }
