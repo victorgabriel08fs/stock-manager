@@ -11,7 +11,7 @@
 
 Este repositório contém um sistema completo de gerenciamento de estoque e vendas desenvolvido em PHP utilizando o framework Laravel e a biblioteca de front-end Bootstrap. O sistema oferece uma solução abrangente para empresas que necessitam controlar suas categorias de produtos, itens em estoque, vendas e relatórios de desempenho.
 
-## Instruções de Instalação
+## Instruções de Instalação e Execução
 
 1. Clone este repositório em sua máquina local usando o comando abaixo:
 
